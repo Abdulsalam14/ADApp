@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div id="content">
+    @{
+        if (ViewBag.Movie!=null)
+        {
+            <img src="@ViewBag.Movie" />
+        }
+        else
+        {
+            <h1>Burada sizin reklaminiz ola biler..</h1>
+        }
+    }
+
+</div>
+
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(() => {
+            setInterval(() => {
+                $.ajax({
+                    url: '/Home/GetAD',
+                    success: function (response) {
+                        if (response) {
+                            $("#content").html(`<img src=${response}/>`)
+                            $.ajax({
+                                url: '/Home/RemoveAD',
+                                success: function (response) {
+                                    console.log("deleted data from redis")
+                                },
+                                error: function (xhr, status, error) {
+                                    console.error(error);
+                                }
+                            });
+                        }
+                        else {
+                            $("#content").html(`<h1>Burada sizin reklaminiz ola biler.</h1>`)
+
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(error);
+                        $("#content").html(`<h1>Burada sizin reklaminiz ola biler.</h1>`)
+
+                    }
+                });
+            }, 20000)
+        });
+    </script>
+}

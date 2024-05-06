@@ -1,0 +1,8 @@
+{
+    "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "AzureWebJobsStorageConnectionStringValue",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "AzureConStr": "DefaultEndpointsProtocol=https;AccountName=group12254;AccountKey=6h9JaFbnfnKveurCF1UyGoOaxA/OXM9hU+Ip1s7B7MxowcMVmIRmREl0vTvsLpI8mQsQw8Q491/u+AStjDso5Q==;EndpointSuffix=core.windows.net"
+  }
+}
